@@ -27,19 +27,20 @@ CREATE TABLE vet_specialties (
 ALTER TABLE vet_specialties ADD CONSTRAINT fk_vet_specialties_vets FOREIGN KEY (vet_id) REFERENCES vets (id);
 ALTER TABLE vet_specialties ADD CONSTRAINT fk_vet_specialties_specialties FOREIGN KEY (specialty_id) REFERENCES specialties (id);
 
-CREATE TABLE types (
-  id   INTEGER IDENTITY PRIMARY KEY,
-  name VARCHAR(80)
-);
-CREATE INDEX types_name ON types (name);
-
 CREATE TABLE owners (
   id         INTEGER IDENTITY PRIMARY KEY,
   first_name VARCHAR(30),
   last_name  VARCHAR_IGNORECASE(30),
+  age        INTEGER,
   address    VARCHAR(255),
   city       VARCHAR(80),
   telephone  VARCHAR(20)
+);
+CREATE INDEX types_name ON types (name);
+
+CREATE TABLE types (
+  id   INTEGER IDENTITY PRIMARY KEY,
+  name VARCHAR(80)
 );
 CREATE INDEX owners_last_name ON owners (last_name);
 
